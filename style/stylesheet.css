@@ -1,0 +1,16 @@
+body{
+    height:100svh;
+    align-content: center;
+}
+
+
+#kit-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.kit-piece{
+    background-color: white;
+    border:solid black;
+}
