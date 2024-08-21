@@ -4,6 +4,10 @@ const kitContainer = document.getElementById('kit-container')
 const body = document.querySelector('body')
 body.style.backgroundImage = "url('images/background.jpg')"
 
+
+const drumTriggerKeys = ["a", "s", "d", "f", "g", 
+                        "h", "j", "k", "l"]
+
 const drumKitParts = ['Kick', 'Snare', 'HiHat', 'OpenHat',
                      'Tom', 'Clap', 'Boom', 'Ride', 'Tink']
 
@@ -11,21 +15,36 @@ const drumKitParts = ['Kick', 'Snare', 'HiHat', 'OpenHat',
 for (i = 0; i <= 8; i++){
     const kitPiece = document.createElement('div')
     kitPiece.id = `kitPiece${i}`
-    kitPiece.class = 'kitPiece'
-    kitPiece.innerText = drumKitParts[i] 
+    kitPiece.className = 'kit-piece'
+    
+    
+    const kitTriggerText = document.createElement('p')
+    let upperTriggerText = drumTriggerKeys[i].toUpperCase()
+    kitTriggerText.innerText = drumTriggerKeys[i]
+
+    const kitPieceText = document.createElement('p')
+    kitPieceText.innerText = drumKitParts[i] 
+
+    kitPiece.appendChild(kitTriggerText)
+    kitPiece.appendChild(kitPieceText)
     kitContainer.appendChild(kitPiece)
 
     kitPiece.addEventListener('click', event =>{
-        drumTrigger(kitPiece.innerText)
+        drumTrigger(kitPieceText.innerText)
         
     })
 }
 
+addEventListener('keydown', event =>{
+    if(drumTriggerKeys.includes(event.key)){
+        let indexNum = drumTriggerKeys.indexOf(event.key)
+        drumTrigger(drumKitParts[indexNum])
+    }
+})
 
 function drumTrigger(drumPart){
     
     let drumLower = drumPart.toLowerCase()
-    console.log(drumLower)
     let audio = new Audio(`sounds/${drumLower}.wav`);
     audio.play();
 }
