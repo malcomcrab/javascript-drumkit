@@ -1,6 +1,7 @@
 body{
     height:100svh;
     align-content: center;
+    font-family: sans-serif;
 }
 
 
@@ -11,13 +12,25 @@ body{
 }
 
 .kit-piece{
+    width: 60px;
     display: flex;
     flex-direction: column;
     text-align: center;
-    color:white;
     background-color: rgba(126, 126, 126, 0.63);
     border:solid black;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 0px 20px;
     margin: 10px;
+}
+
+.kit-trigger-text{
+    color: white;
+    font-size: xx-large;
+    margin: 0px;
+}
+
+.kit-piece-text{
+    color:rgb(255, 174, 0);
+    margin: 0px;
+    font-size: small;
 }

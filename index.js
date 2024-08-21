@@ -20,9 +20,12 @@ for (i = 0; i <= 8; i++){
     
     const kitTriggerText = document.createElement('p')
     let upperTriggerText = drumTriggerKeys[i].toUpperCase()
-    kitTriggerText.innerText = drumTriggerKeys[i]
+    kitTriggerText.className = 'kit-trigger-text'
+    kitTriggerText.innerText = upperTriggerText
+
 
     const kitPieceText = document.createElement('p')
+    kitPieceText.className = 'kit-piece-text'
     kitPieceText.innerText = drumKitParts[i] 
 
     kitPiece.appendChild(kitTriggerText)
@@ -43,7 +46,6 @@ addEventListener('keydown', event =>{
 })
 
 function drumTrigger(drumPart){
-    
     let drumLower = drumPart.toLowerCase()
     let audio = new Audio(`sounds/${drumLower}.wav`);
     audio.play();
