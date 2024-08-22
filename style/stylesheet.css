@@ -34,3 +34,8 @@ body{
     margin: 0px;
     font-size: small;
 }
+ 
+.triggered{
+    transform: scale(1.1);
+    border:solid rgb(255, 174, 0);
+}

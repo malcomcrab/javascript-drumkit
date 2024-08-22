@@ -32,16 +32,15 @@ for (i = 0; i <= 8; i++){
     kitPiece.appendChild(kitPieceText)
     kitContainer.appendChild(kitPiece)
 
-    kitPiece.addEventListener('click', event =>{
-        drumTrigger(kitPieceText.innerText)
-        
-    })
+    
 }
 
 addEventListener('keydown', event =>{
     if(drumTriggerKeys.includes(event.key)){
         let indexNum = drumTriggerKeys.indexOf(event.key)
         drumTrigger(drumKitParts[indexNum])
+        
+        triggerScaleUp(`kitPiece${indexNum}`)
     }
 })
 
@@ -49,4 +48,12 @@ function drumTrigger(drumPart){
     let drumLower = drumPart.toLowerCase()
     let audio = new Audio(`sounds/${drumLower}.wav`);
     audio.play();
+}
+
+function triggerScaleUp(kitPiece){
+    const kitPieceScale = document.getElementById(`${kitPiece}`)
+    kitPieceScale.className = 'kit-piece triggered'
+    setTimeout(() =>{
+        kitPieceScale.className = 'kit-piece'
+    },200)
 }
